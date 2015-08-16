@@ -1,0 +1,45 @@
+<!-- Outter Container -->
+<md-content flex layout="column" tabIndex="-1" role="main">
+    <!-- Header Toolbar -->
+    <md-toolbar layout="row" layout-align="space-between center">
+        <p></p>
+        <p>AppSumo Survey: Administration</p>
+        <div layout="row" layout-align="center center">
+            <md-button class="md-raised md-button md-default-theme" ng-click="AuthenticationService.logout()" aria-label="AppSumo App Administration: Logout">
+                Logout
+                <md-tooltip>
+                    Logout
+                </md-tooltip>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <!-- Main Container -->
+    <md-content layout="row" flex id="content" class="md-primary md-hue-1">
+        <!-- Left Side Panel -->
+        <md-sidenav flex layout="column" md-component-id="left">
+            <md-content flex layout="row">
+                <!-- Left Side Panel content -->
+                <md-content flex layout="column" layout-padding>
+                    <md-content flex>
+                    </md-content>
+                </md-content>
+            </md-content>
+        </md-sidenav>
+        <!-- Main Content -->
+        <md-content flex layout='column'>
+            <md-content flex>
+                
+            </md-content>
+        </md-content>
+        <!-- Right Side Panel -->
+        <md-sidenav flex layout="column" md-component-id="right">
+            <md-content flex layout="row">
+                <!-- Right Side Panel content -->
+                <md-content flex layout="column" layout-padding>
+                    <md-content flex>
+                    </md-content>
+                </md-content>
+            </md-content>
+        </md-sidenav>
+    </md-content>
+</md-content>

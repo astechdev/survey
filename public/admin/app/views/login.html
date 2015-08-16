@@ -1,0 +1,17 @@
+<md-content flex layout="column" tabIndex="-1" role="main">
+    <md-content id="login" flex>
+        <md-content class="transparent" layout="row" layout-padding layout-align="center center">
+            <div class="formWrap md-whiteframe-z5">
+                <form ng-submit="AuthenticationService.login('/admin')">
+                    <md-input-container >
+                        <input ng-model="AuthenticationService.email" type="email" placeholder="Email (required)" ng-required="true">
+                    </md-input-container>
+                    <md-input-container >
+                        <input ng-model="AuthenticationService.password" type="password" placeholder="Password (required)" ng-required="true">
+                    </md-input-container>
+                    <md-button type="submit" class="md-raised md-primary">Login</md-button>
+                </form>
+            </div>
+        </md-content>
+    </md-content>
+</md-content>

@@ -1,0 +1,88 @@
+#login{
+	background-image: url("/gameboard/app/css/images/login-bg.jpg");
+	background-position: 50%;
+	background-size: cover;
+    
+	
+	.formWrap{
+		background: url("/gameboard/app/css/images/login-form-bg.png") repeat-x top left;
+		border: 1px solid #a58a5c;
+		@include border-radius(6px);
+		@include single-box-shadow(rgba(0,0,0,0.6), 0, 0px, 5px, 0px);
+		width: 30%;
+		padding-top: 10px;
+		margin-top: 10px;
+	}
+}
+
+#login-container{
+    background: url("/gameboard/app/css/images/login-form-bg.png") repeat-x top left;
+}
+
+.transparent{
+	background: transparent;
+}
+
+#gameboard{
+    .gridsterWidgetContainer {
+        height: calc(100% - 24px);
+        overflow: auto;
+/*         background-color: #fff; */
+/*         max-width: calc(100% - 8px) !important;
+        margin-left: 5px; */
+    }
+    .gridsterWidgetContainer li {
+        padding: 8px 6px;
+        list-style-type: none;
+        position: relative;
+    }
+    .pvtAttr {
+        background: #F3F3F3;
+        border: 1px solid #DEDEDE;
+        padding: 2px 5px;
+        white-space: nowrap;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        color: #000;
+        cursor: move;
+    }
+    .pitchTypeFilterSelector:hover {
+        background-color:#dddddd;
+    }
+    .pitchTypeFilterSelector.on {
+        background-color:#aaaaaa;
+    }
+}
+.pitchLocator {
+    height: 340px;
+}
+
+#hotZoneInnerGrid {
+    z-index: 10;
+    top: -166px;
+}
+#hotZoneOutterGrid {
+    width: 100%;
+}
+#hotZoneOutterGrid > ul > li {
+    background-color:#3b3b3b;
+}
+#hotZoneOutterGrid > ul > li:hover {
+    background-color:#dddddd;
+}
+#hotZoneOutterGrid > ul > li.gs-w.on {
+    background-color:#aaaaaa;
+}
+#hotZoneInnerGrid > ul > li {
+    background-color:#eeeeee;
+}
+#hotZoneInnerGrid > ul > li:hover {
+    background-color:#dddddd;
+}
+#hotZoneInnerGrid > ul > li.gs-w.on {
+    background-color:#aaaaaa;
+}
+#pivotTableGrid > ul > li {
+    background-color:#eeeeee;
+}
