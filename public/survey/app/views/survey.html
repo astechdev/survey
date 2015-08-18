@@ -21,12 +21,15 @@
                         </md-radio-group>
                     </md-content>
                 </md-content>
-                <md-button ng-if="SurveyService.answerId !== undefined" class="md-raised md-primary" ng-click="SurveyService.localStoreAnswer()">Next</md-button>
+                <md-button ng-if="SurveyService.answerId !== undefined" class="md-raised md-primary" ng-click="SurveyUtilService.addAnswerToSurvey(SurveyService.questionId, SurveyService.answerId, SurveyService.localStoreAnswer, SurveyService.localStoreAnswer)">Next</md-button>
                 <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'complete'">
                     <p>Survey complete...Thank you!</p>
                 </md-content>
                 <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'unavailable'">
                     <p>This question is not available.</p>
+                </md-content>
+                <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'error'">
+                    <p>There was an error saving your response.</p>
                 </md-content>
             </md-content>
         </md-content>

@@ -33,6 +33,7 @@ module.exports = function(app) {
     app.get('/api/v1/user/logout', userController.logout);
     app.get('/api/v1/survey', userController.getSurveyModel);
     app.post('/api/v1/survey/question', isLoggedIn, userController.addQuestionToSurvey);
+    app.post('/api/v1/survey/answer', isLoggedIn, userController.submitAnswer);
 };
 
 function isLoggedIn(req, res, next) {

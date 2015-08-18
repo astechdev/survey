@@ -25,6 +25,13 @@ User_Controller.prototype = {
             res.write(JSON.stringify(response));
             res.end();
         });
+    },
+    submitAnswer: function(req, res) {
+        userModel.submitAnswer(req.body, function(response) {
+            res.contentType('application/json');
+            res.write(JSON.stringify(response));
+            res.end();
+        });
     }
 };
 module.exports = new User_Controller();

@@ -40,6 +40,8 @@ define(['app', '../../../common/services/surveyUtilService'], function(app) {
                         }
                     } else if($routeParams.question === 'complete') {
                         surveyService.displayContent = 'complete';
+                    }else if($routeParams.question === 'error') {
+                        surveyService.displayContent = 'error';
                     } else {
                         var isAnswered = surveyService.answeredSurveyModel.questions.indexOf(String($routeParams.question));
                         if (isAnswered < 0){
@@ -64,20 +66,24 @@ define(['app', '../../../common/services/surveyUtilService'], function(app) {
                 setQuestionId: function(questionId) {
                     surveyService.questionId = questionId;
                 },
-                localStoreAnswer: function() {
-                    var answeredSurveyModel = localStorageService.get('answeredSurveyModel');
-                    if(answeredSurveyModel === null) {
-                        answeredSurveyModel = {
-                            questions: [],
-                            answers: {}
-                        };
+                localStoreAnswer: function(status) {
+                    if(status === 'complete'){
+                        var answeredSurveyModel = localStorageService.get('answeredSurveyModel');
+                        if(answeredSurveyModel === null) {
+                            answeredSurveyModel = {
+                                questions: [],
+                                answers: {}
+                            };
+                            localStorageService.set('answeredSurveyModel', answeredSurveyModel);
+                        }
+                        answeredSurveyModel.questions.push(surveyService.questionId);
+                        answeredSurveyModel.answers[surveyService.questionId] = surveyService.answerId;
                         localStorageService.set('answeredSurveyModel', answeredSurveyModel);
+                        surveyService.answerId = undefined;
+                        $location.path('/survey/random');
+                    } else if (status === 'error'){
+                        $location.path('/survey/error');
                     }
-                    answeredSurveyModel.questions.push(surveyService.questionId);
-                    answeredSurveyModel.answers[surveyService.questionId] = surveyService.answerId;
-                    localStorageService.set('answeredSurveyModel', answeredSurveyModel);
-                    surveyService.answerId = undefined;
-                    $location.path('/survey/random');
                 }
             };
             var surveyService = new SurveyService();

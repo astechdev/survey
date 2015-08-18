@@ -61,6 +61,19 @@ define(['app'], function(app) {
                             failureCallback('error');
                         }
                     });
+                },
+                addAnswerToSurvey: function(questionId, answerId, successCallback, failureCallback){
+                    $http.post('/api/v1/survey/answer',JSON.stringify({question_id: questionId, available_answer_id: answerId}))).
+                    success(function(data, status, headers, config) {
+                        if(successCallback !== 'undefined'){
+                            successCallback('complete');
+                        }
+                    }).
+                    error(function(data, status, headers, config) {
+                        if(failureCallback !== 'undefined'){
+                            failureCallback('error');
+                        }
+                    });
                 }
             };
             var surveyUtilService = new SurveyUtilService();

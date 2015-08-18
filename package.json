@@ -1,7 +1,7 @@
 {
-    "name": "AppSumoSurvey",
+    "name": "Survey",
     "version": "1.0.0",
-    "description": "Coding assesment",
+    "description": "3rd party server dependencies",
     "keywords": [],
     "author": {
         "name": "Scott Aslan",

@@ -1,3 +1,9 @@
+//Database configuration
+process.env.dbName = 'pitchpredict';
+process.env.username = 'adminHDr7Y4a';
+process.env.password = '68UYVLhK8Cgt';
+process.env.port = 3306;
+
 var express = require('express');
 var fs = require('fs');
 var http = require('http');
@@ -13,10 +19,6 @@ var AppSumoSurvey = function() {
         if(typeof self.ipaddress === "undefined") {
             self.ipaddress = "127.0.0.1";
         }
-        process.env.dbName = 'pitchpredict';
-        process.env.username = 'adminHDr7Y4a';
-        process.env.password = '68UYVLhK8Cgt';
-        process.env.port = 3306;
         //The following needs to happen after we assign env vars
         var configPassport = require('./config/passport')(passport); // pass passport for configuration
     };

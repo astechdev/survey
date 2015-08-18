@@ -80,6 +80,14 @@ User_Model.prototype = {
             callback({});
         });
     },
+    submitAnswer: function(AnswerModel, callback) {
+        Answers.create({
+            question_id: AnswerModel.question_id,
+            available_answer_id: AnswerModel.available_answer_id
+        }).then(function() {
+            callback({});
+        });
+    },
     generateHash: function(password) {
         return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
     },
