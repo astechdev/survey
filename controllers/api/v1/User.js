@@ -18,6 +18,13 @@ User_Controller.prototype = {
             res.write(JSON.stringify(response));
             res.end();
         });
+    },
+    addQuestionToSurvey: function(req, res) {
+        userModel.addQuestionToSurvey(req.body, function(response) {
+            res.contentType('application/json');
+            res.write(JSON.stringify(response));
+            res.end();
+        });
     }
 };
 module.exports = new User_Controller();

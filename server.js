@@ -6,23 +6,17 @@ var passport = require('passport');
 var AppSumoSurvey = function() {
     var self = this;
     self.app = express();
-    /**
-     *  Set up server IP address and port # using env variables/defaults.
-     */
     self.setEnvironmentVariables = function() {
         //  Set the environment variables we need
-        self.ipaddress = process.env.OPENSHIFT_NODEJS_IP || '';
-        self.port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+        self.ipaddress = '';
+        self.port = 3000;
         if(typeof self.ipaddress === "undefined") {
-            //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
-            //  allows us to run/test the app locally.
-            console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
             self.ipaddress = "127.0.0.1";
         }
-        process.env.OPENSHIFT_GEAR_NAME = 'pitchpredict';
-        process.env.OPENSHIFT_MYSQL_DB_USERNAME = 'adminHDr7Y4a';
-        process.env.OPENSHIFT_MYSQL_DB_PASSWORD = '68UYVLhK8Cgt';
-        process.env.OPENSHIFT_MYSQL_DB_PORT = 3306;
+        process.env.dbName = 'pitchpredict';
+        process.env.username = 'adminHDr7Y4a';
+        process.env.password = '68UYVLhK8Cgt';
+        process.env.port = 3306;
         //The following needs to happen after we assign env vars
         var configPassport = require('./config/passport')(passport); // pass passport for configuration
     };
@@ -81,8 +75,8 @@ var AppSumoSurvey = function() {
         app.use(express.json());
         app.use(express.urlencoded());
         app.use(express.methodOverride());
-        app.use(express.cookieParser('sixhourdays'));
-        app.use(express.session({secret: 'sixhourdays'})); 
+        app.use(express.cookieParser('haggard'));
+        app.use(express.session({secret: 'haggard'})); 
         app.use(passport.initialize());
         app.use(passport.session()); // persistent login sessions
         app.use(app.router);
@@ -97,10 +91,6 @@ var AppSumoSurvey = function() {
             res.status(500);
             res.render('survey/app/views/500.html');
         });
-        // development only
-        if('development' == app.get('env')) {
-            app.use(express.errorHandler());
-        }
     };
     self.routes = function() {
         require('./routes/api/v1/routes.js')(self.app);

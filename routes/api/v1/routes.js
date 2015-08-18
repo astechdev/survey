@@ -5,16 +5,34 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
         res.render('survey/app/index.html');
     });
+    app.get('/survey/:question', function(req, res) {
+        res.render('survey/app/index.html');
+    });
+    app.get('/survey', function(req, res) {
+        res.redirect('/survey/random');
+    });
     app.get('/admin', function(req, res) {
-        res.render('admin/app/index.html');
+        res.redirect('/admin/results');
+    });
+    app.get('/admin/:content', function(req, res) {
+        if(req.isAuthenticated()) {
+            res.render('admin/app/index.html');
+        } else {
+            res.redirect('/login');
+        }
     });
     app.get('/login', function(req, res) {
-        res.redirect('/admin');
+        if(req.isAuthenticated()) {
+            res.redirect('/admin');
+        } else {
+            res.render('admin/app/index.html');
+        }
     });
     // User
     app.post('/api/v1/user/login', passport.authenticate('local-login'), userController.login);
     app.get('/api/v1/user/logout', userController.logout);
-    app.get('/api/v1/survey', isLoggedIn, userController.getSurveyModel);
+    app.get('/api/v1/survey', userController.getSurveyModel);
+    app.post('/api/v1/survey/question', isLoggedIn, userController.addQuestionToSurvey);
 };
 
 function isLoggedIn(req, res, next) {

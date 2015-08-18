@@ -12,7 +12,8 @@ require.config({
         "login-controller": "controllers/loginController",
         "admin-controller": "controllers/adminController",
         "authentication-service": "services/authenticationService",
-        "admin-service": "services/adminService"
+        "admin-service": "services/adminService",
+        "survey-util-service": "../../common/services/surveyUtilService"
     },
     shim: {
         //jQuery Plugins

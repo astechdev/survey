@@ -9,8 +9,10 @@ require.config({
         "angular-animate": "../../bower_components/angular-animate/angular-animate",
         "angular-aria": "../../bower_components/angular-aria/angular-aria",
         "angular-route": "../../bower_components/angular-route/angular-route",
+        "angular-local-storage": "../../bower_components/angular-local-storage/dist/angular-local-storage",
         "survey-controller": "controllers/surveyController",
-        "survey-service": "services/surveyService"
+        "survey-service": "services/surveyService",
+        "survey-util-service": "../../common/services/surveyUtilService"
     },
     shim: {
         //jQuery Plugins
@@ -20,7 +22,8 @@ require.config({
         "angular-route": ["angular"],
         "angular-material": ["angular", "angular-animate", "angular-aria"],
         "angular-animate": ["angular"],
-        "angular-aria": ["angular"]
+        "angular-aria": ["angular"],
+        "angular-local-storage": ["angular"]
     },
     deps: ["app"]
 });

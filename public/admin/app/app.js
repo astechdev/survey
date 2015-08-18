@@ -6,7 +6,9 @@ define(['angularAMD', 'angular-route', "angular-material"], function(angularAMD)
         //For pretty URLs
         $locationProvider.html5Mode(true);
         //Define routes, views, and controllers
-        $routeProvider.when('/admin', angularAMD.route({
+        $routeProvider.when('/admin/', angularAMD.route({
+            redirectTo: '/admin/results'
+        })).when('/admin/:content', angularAMD.route({
             templateUrl: 'admin/app/views/admin.html',
             controller: 'adminController',
             controllerUrl: 'controllers/adminController'
@@ -23,12 +25,11 @@ define(['angularAMD', 'angular-route', "angular-material"], function(angularAMD)
         $mdThemingProvider.theme('default')
             .primaryPalette('red', {
             'default': '400', 
-            'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
-            'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
-            'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
-        })
-            .accentPalette('grey', {
-            'default': '200' // use shade 200 for default, and keep all other shades the same
+            'hue-1': '100',
+            'hue-2': '600',
+            'hue-3': 'A100'
+        }).accentPalette('grey', {
+            'default': '200'
         });
     });
     return angularAMD.bootstrap(app);

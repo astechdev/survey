@@ -1,36 +1,34 @@
 <!-- Outter Container -->
 <md-content flex layout="column" tabIndex="-1" role="main">
     <!-- Header Toolbar -->
-    <md-toolbar layout="row" layout-align="center center">
-        <p>AppSumo Survey</p>
+    <md-toolbar layout="row" layout-align="space-between center">
+        <p></p>
+        <p>AppSumo Survey: Welcome</p>
+        <p></p>
     </md-toolbar>
     <!-- Main Container -->
     <md-content layout="row" flex id="content" class="md-primary md-hue-1">
-        <!-- Left Side Panel -->
-        <md-sidenav flex layout="column" md-component-id="left">
-            <md-content flex layout="row">
-                <!-- Left Side Panel content -->
-                <md-content flex layout="column" layout-padding>
-                    <md-content flex>
+        <!-- Main Content  -->
+        <md-content flex layout="row" layout-align="center center">
+            <md-content flex=50 layout="column" class="md-whiteframe-z5 md-primary md-hue-1" layout-padding layout-align="space-around center">
+                <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'survey'">
+                    <h6 class="md-title">{{(SurveyUtilService.surveyModel.questions | filter:{id:SurveyService.questionId})[0].question}}</h6>
+                    <md-content class="md-primary md-hue-1" flex layout-sm='column' layout-gt-sm='row' layout-align="space-around center">
+                        <md-radio-group ng-model="SurveyService.answerId" class="md-primary">
+                            <md-radio-button ng-repeat="availableAnswer in SurveyUtilService.getAvailableAnswers(SurveyService.questionId)" ng-value="availableAnswer.id">
+                                {{ availableAnswer.available_answer }}
+                            </md-radio-button>
+                        </md-radio-group>
                     </md-content>
                 </md-content>
-            </md-content>
-        </md-sidenav>
-        <!-- Main Content -->
-        <md-content flex layout='column'>
-            <md-content flex>
-                
+                <md-button ng-if="SurveyService.answerId !== undefined" class="md-raised md-primary" ng-click="SurveyService.localStoreAnswer()">Next</md-button>
+                <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'complete'">
+                    <p>Survey complete...Thank you!</p>
+                </md-content>
+                <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'unavailable'">
+                    <p>This question is not available.</p>
+                </md-content>
             </md-content>
         </md-content>
-        <!-- Right Side Panel -->
-        <md-sidenav flex layout="column" md-component-id="right">
-            <md-content flex layout="row">
-                <!-- Right Side Panel content -->
-                <md-content flex layout="column" layout-padding>
-                    <md-content flex>
-                    </md-content>
-                </md-content>
-            </md-content>
-        </md-sidenav>
     </md-content>
 </md-content>

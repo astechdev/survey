@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "authors": ["Scott Aslan <astechdev@gmail.com>"],
     "description": "3rd party dependencies",
-    "license": "AGPL",
+    "license": "",
     "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"],
     "dependencies": {
         "angular-animate": "^1.3.0 || >1.4.0-beta.0",

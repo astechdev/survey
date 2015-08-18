@@ -1,17 +1,29 @@
+<!-- Outter Container -->
 <md-content flex layout="column" tabIndex="-1" role="main">
-    <md-content id="login" flex>
-        <md-content class="transparent" layout="row" layout-padding layout-align="center center">
-            <div class="formWrap md-whiteframe-z5">
-                <form ng-submit="AuthenticationService.login('/admin')">
-                    <md-input-container >
-                        <input ng-model="AuthenticationService.email" type="email" placeholder="Email (required)" ng-required="true">
+    <!-- Header Toolbar -->
+    <md-toolbar layout="row" layout-align="space-between center">
+        <p></p>
+        <p>AppSumo Survey: Administration Login</p>
+        <p></p>
+    </md-toolbar>
+    <!-- Main Container -->
+    <md-content layout="row" flex id="content" class="md-primary md-hue-1">
+        <!-- Main Content -->
+        <md-content flex layout="column" layout-padding layout-align="center center">
+            <md-content flex=50 class="md-whiteframe-z5 md-primary md-hue-1" layout-align="space-around center">
+                <p>Welcome! Please login to continue...</p>
+                <form ng-submit="AuthenticationService.login('/admin/results')">
+                    <md-input-container>
+                        <label>Email</label>
+                        <input ng-model="AuthenticationService.email" type="email" ng-required="true">
                     </md-input-container>
-                    <md-input-container >
-                        <input ng-model="AuthenticationService.password" type="password" placeholder="Password (required)" ng-required="true">
+                    <md-input-container>
+                        <label>Password</label>
+                        <input ng-model="AuthenticationService.password" type="password" ng-required="true">
                     </md-input-container>
                     <md-button type="submit" class="md-raised md-primary">Login</md-button>
                 </form>
-            </div>
+            </md-content>
         </md-content>
     </md-content>
 </md-content>

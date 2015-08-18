@@ -8,6 +8,9 @@ define(['app'], function(app) {
             };
             AuthenticationService.prototype = {
                 constructor: AuthenticationService,
+                init: function() {
+                    //Do nothing for now...
+                },
                 login: function (successRoute){
                     $http.post('/api/v1/user/login', {email:authenticationService.email, password: authenticationService.password}).
                     success(function(data, status, headers, config) {

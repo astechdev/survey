@@ -1,0 +1,22 @@
+<!-- Outter Container -->
+<md-content flex layout="column" tabIndex="-1" role="main">
+    <!-- Header Toolbar -->
+    <md-toolbar layout="row" layout-align="space-between center">
+        <p></p>
+        <p>AppSumo Survey: Welcome</p>
+        <p></p>
+    </md-toolbar>
+    <!-- Main Container -->
+    <md-content layout="row" flex id="content" class="md-primary md-hue-1">
+        <!-- Main Content  -->
+        <md-content flex layout="row" layout-align="center center">
+            <md-content flex=50 layout="column" class="md-whiteframe-z5 md-primary md-hue-1" layout-padding layout-align="space-around center">
+                <p>Welcome to the AppSumo Survey. Let's get started...</p>
+                <md-content class="md-primary md-hue-1" flex layout-sm='column' layout-gt-sm='row' layout-align="space-around center">
+                    <md-button class="md-raised md-primary" ng-click="takeSurvey();">Take Survey</md-button>
+                    <md-button class="md-raised md-primary" ng-click="administer();">Administer</md-button>
+                </md-content>
+            </md-content>
+        </md-content>
+    </md-content>
+</md-content>
