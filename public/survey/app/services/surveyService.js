@@ -2,11 +2,11 @@ define(['app', '../../../common/services/surveyUtilService'], function(app) {
     app.factory('SurveyService', ['$http', 'SurveyUtilService', '$routeParams', '$location', 'localStorageService',
         function($http, SurveyUtilService, $routeParams, $location, localStorageService) {
             function SurveyService() {
-                this.displayContent;
+                this.displayContent = "";
                 this.answeredSurveyModel = {};
                 this.unansweredQuestions = [];
-                this.questionId;
-                this.answerId;
+                this.questionId = undefined;
+                this.answerId = undefined;
             };
             SurveyService.prototype = {
                 constructor: SurveyService,
@@ -26,12 +26,12 @@ define(['app', '../../../common/services/surveyUtilService'], function(app) {
                     if($routeParams.question === 'random') {
                         angular.forEach(SurveyUtilService.surveyModel.questions, function(question) {
                             var isAnswered = surveyService.answeredSurveyModel.questions.indexOf(String(question.id));
-                            if (isAnswered < 0){
+                            if(isAnswered < 0) {
                                 surveyService.unansweredQuestions.push(question.id);
                             }
                         });
-                        var randomQuestion = surveyService.unansweredQuestions[Math.floor(Math.random()*surveyService.unansweredQuestions.length)];
-                        if(randomQuestion !== undefined){
+                        var randomQuestion = surveyService.unansweredQuestions[Math.floor(Math.random() * surveyService.unansweredQuestions.length)];
+                        if(randomQuestion !== undefined) {
                             surveyService.displayContent = 'survey';
                             $location.path('/survey/' + randomQuestion);
                         } else {
@@ -40,18 +40,18 @@ define(['app', '../../../common/services/surveyUtilService'], function(app) {
                         }
                     } else if($routeParams.question === 'complete') {
                         surveyService.displayContent = 'complete';
-                    }else if($routeParams.question === 'error') {
+                    } else if($routeParams.question === 'error') {
                         surveyService.displayContent = 'error';
                     } else {
                         var isAnswered = surveyService.answeredSurveyModel.questions.indexOf(String($routeParams.question));
-                        if (isAnswered < 0){
+                        if(isAnswered < 0) {
                             var isAvailable = SurveyUtilService.surveyModel.questions.indexOf(String($routeParams.question));
                             var availableQuestionsIdArray = [];
                             angular.forEach(SurveyUtilService.surveyModel.questions, function(question) {
                                 availableQuestionsIdArray.push(String(question.id));
                             });
                             var isAvailable = availableQuestionsIdArray.indexOf($routeParams.question);
-                            if (isAvailable >= 0){
+                            if(isAvailable >= 0) {
                                 surveyService.displayContent = 'survey';
                                 surveyService.setQuestionId($routeParams.question);
                             } else {
@@ -67,7 +67,7 @@ define(['app', '../../../common/services/surveyUtilService'], function(app) {
                     surveyService.questionId = questionId;
                 },
                 localStoreAnswer: function(status) {
-                    if(status === 'complete'){
+                    if(status === 'complete') {
                         var answeredSurveyModel = localStorageService.get('answeredSurveyModel');
                         if(answeredSurveyModel === null) {
                             answeredSurveyModel = {
@@ -81,7 +81,7 @@ define(['app', '../../../common/services/surveyUtilService'], function(app) {
                         localStorageService.set('answeredSurveyModel', answeredSurveyModel);
                         surveyService.answerId = undefined;
                         $location.path('/survey/random');
-                    } else if (status === 'error'){
+                    } else if(status === 'error') {
                         $location.path('/survey/error');
                     }
                 }

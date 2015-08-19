@@ -1,4 +1,5 @@
 var userController = require('../../../controllers/api/v1/User');
+var surveyController = require('../../../controllers/api/v1/Survey');
 var passport = require('passport');
 module.exports = function(app) {
     //Application
@@ -28,17 +29,19 @@ module.exports = function(app) {
             res.render('admin/app/index.html');
         }
     });
-    // User
+    //Api
     app.post('/api/v1/user/login', passport.authenticate('local-login'), userController.login);
     app.get('/api/v1/user/logout', userController.logout);
-    app.get('/api/v1/survey', userController.getSurveyModel);
-    app.post('/api/v1/survey/question', isLoggedIn, userController.addQuestionToSurvey);
-    app.post('/api/v1/survey/answer', isLoggedIn, userController.submitAnswer);
+    app.get('/api/v1/survey', surveyController.getSurveyModel);
+    app.post('/api/v1/survey/question', isLoggedIn, surveyController.addQuestionToSurvey);
+    app.post('/api/v1/survey/answer', surveyController.submitAnswer);
 };
 
 function isLoggedIn(req, res, next) {
-    // if user is authenticated in the session, carry on 
+    //if user is authenticated in the session, carry on 
     if(req.isAuthenticated()) return next();
-    //Could test for failure and send approptiate error code
-    res.send(401);
+    //Could determine reason for failure here and
+    //then send approptiate error code...send 400
+    //for now
+    res.send(400);
 }

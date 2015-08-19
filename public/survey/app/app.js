@@ -11,19 +11,20 @@ define(['angularAMD', 'angular-local-storage', 'angular-route', "angular-materia
             templateUrl: 'survey/app/views/survey.html',
             controller: 'surveyController',
             controllerUrl: 'controllers/surveyController'
-        })).when('/404', angularAMD.route({
-            templateUrl: 'survey/app/views/404.html'
         })).when('/', angularAMD.route({
             templateUrl: 'survey/app/views/welcome.html',
             controller: 'welcomeController',
             controllerUrl: 'controllers/welcomeController'
+        })).when('/400', angularAMD.route({
+            templateUrl: 'common/views/400.html'
+        })).when('/500', angularAMD.route({
+            templateUrl: 'common/views/500.html'
         })).otherwise(angularAMD.route({
-            redirectTo: '/404'
+            redirectTo: '/400'
         }));
         //Define app palettes
-        $mdThemingProvider.theme('default')
-            .primaryPalette('red', {
-            'default': '400', 
+        $mdThemingProvider.theme('default').primaryPalette('red', {
+            'default': '400',
             'hue-1': '100',
             'hue-2': '600',
             'hue-3': 'A100'

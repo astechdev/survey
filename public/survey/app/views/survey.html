@@ -10,7 +10,7 @@
     <md-content layout="row" flex id="content" class="md-primary md-hue-1">
         <!-- Main Content  -->
         <md-content flex layout="row" layout-align="center center">
-            <md-content flex=50 layout="column" class="md-whiteframe-z5 md-primary md-hue-1" layout-padding layout-align="space-around center">
+            <md-content flex=75 layout="column" class="md-whiteframe-z5 md-primary md-hue-1" layout-padding layout-align="space-around center">
                 <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'survey'">
                     <h6 class="md-title">{{(SurveyUtilService.surveyModel.questions | filter:{id:SurveyService.questionId})[0].question}}</h6>
                     <md-content class="md-primary md-hue-1" flex layout-sm='column' layout-gt-sm='row' layout-align="space-around center">

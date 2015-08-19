@@ -83,15 +83,15 @@ var AppSumoSurvey = function() {
         app.use(passport.session()); // persistent login sessions
         app.use(app.router);
         app.use(express.static(path.join(__dirname, 'public')));
-        // Handle 404
+        // Handle 400
         app.use(function(req, res) {
             res.status(400);
-            res.render('survey/app/index.html');
+            res.render('common/views/400.html');
         });
         // Handle 500
         app.use(function(error, req, res, next) {
             res.status(500);
-            res.render('survey/app/views/500.html');
+            res.render('common/views/500.html');
         });
     };
     self.routes = function() {

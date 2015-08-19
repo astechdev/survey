@@ -60,4 +60,4 @@ This app was produced to demonstrate several JS competencies. However, for the s
 
 * Documentation
 
-Had this been production code these topics would have been covered.
+Had this been production code these items would have been completed.

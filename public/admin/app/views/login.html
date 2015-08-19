@@ -8,9 +8,9 @@
     </md-toolbar>
     <!-- Main Container -->
     <md-content layout="row" flex id="content" class="md-primary md-hue-1">
-        <!-- Main Content -->
-        <md-content flex layout="column" layout-padding layout-align="center center">
-            <md-content flex=50 class="md-whiteframe-z5 md-primary md-hue-1" layout-align="space-around center">
+        <!-- Main Content  -->
+        <md-content flex layout="row" layout-align="center center">
+            <md-content flex=75 layout="column" class="md-whiteframe-z5 md-primary md-hue-1" layout-padding layout-align="space-around center">
                 <p>Welcome! Please login to continue...</p>
                 <form ng-submit="AuthenticationService.login('/admin/results')">
                     <md-input-container>

@@ -20,24 +20,24 @@ define(['app'], function(app) {
                     adminService.numberOfNewQuestionAvailableAnswers = 2;
                     adminService.newQuestionAvailableAnswers = new Array(adminService.numberOfNewQuestionAvailableAnswers);
                 },
-                setMainContentDisplay: function(content){
+                setMainContentDisplay: function(content) {
                     adminService.mainContentDisplay = content;
                 },
-                updatePath: function(content){
-                    $location.path(content);
+                updatePath: function(content) {
+                    $location.path('/admin/' + content);
                 },
-                expandNewQuestionAvailableAnswersArray: function(){
+                expandNewQuestionAvailableAnswersArray: function() {
                     adminService.newQuestionAvailableAnswers.push("");
                 },
-                reduceNewQuestionAvailableAnswersArray: function(){
-                    if(adminService.newQuestionAvailableAnswers.length > 2){
+                reduceNewQuestionAvailableAnswersArray: function() {
+                    if(adminService.newQuestionAvailableAnswers.length > 2) {
                         adminService.newQuestionAvailableAnswers.pop();
                     }
                 },
                 toggleLeft: function() {
                     $mdSidenav('left').toggle();
                 },
-                takeSurvey: function(){
+                takeSurvey: function() {
                     //We need a full page load                 
                     $window.location.href = $window.location.protocol + '//' + $window.location.host + '/survey';
                 }

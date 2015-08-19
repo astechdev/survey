@@ -16,15 +16,16 @@ define(['angularAMD', 'angular-route', "angular-material"], function(angularAMD)
             templateUrl: 'admin/app/views/login.html',
             controller: 'loginController',
             controllerUrl: 'controllers/loginController'
-        })).when('/404', angularAMD.route({
-            templateUrl: 'admin/app/views/404.html'
+        })).when('/400', angularAMD.route({
+            templateUrl: 'common/views/400.html'
+        })).when('/500', angularAMD.route({
+            templateUrl: 'common/views/500.html'
         })).otherwise(angularAMD.route({
-            redirectTo: '/404'
+            redirectTo: '/400'
         }));
         //Define app palettes
-        $mdThemingProvider.theme('default')
-            .primaryPalette('red', {
-            'default': '400', 
+        $mdThemingProvider.theme('default').primaryPalette('red', {
+            'default': '400',
             'hue-1': '100',
             'hue-2': '600',
             'hue-3': 'A100'

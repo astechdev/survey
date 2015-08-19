@@ -1,4 +1,4 @@
-var userModel = new require('../../../models/mysql/User');
+var userModel = require('../../../models/mysql/User');
 
 function User_Controller() {}
 User_Controller.prototype = {
@@ -11,27 +11,6 @@ User_Controller.prototype = {
     logout: function(req, res) {
         req.logout();
         res.redirect('/');
-    },
-    getSurveyModel: function(req, res) {
-        userModel.getSurveyModel(function(response) {
-            res.contentType('application/json');
-            res.write(JSON.stringify(response));
-            res.end();
-        });
-    },
-    addQuestionToSurvey: function(req, res) {
-        userModel.addQuestionToSurvey(req.body, function(response) {
-            res.contentType('application/json');
-            res.write(JSON.stringify(response));
-            res.end();
-        });
-    },
-    submitAnswer: function(req, res) {
-        userModel.submitAnswer(req.body, function(response) {
-            res.contentType('application/json');
-            res.write(JSON.stringify(response));
-            res.end();
-        });
     }
 };
 module.exports = new User_Controller();

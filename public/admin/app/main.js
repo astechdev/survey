@@ -11,7 +11,7 @@ require.config({
         "angular-route": "../../bower_components/angular-route/angular-route",
         "login-controller": "controllers/loginController",
         "admin-controller": "controllers/adminController",
-        "authentication-service": "services/authenticationService",
+        "authentication-service": "../../common/services/authenticationService",
         "admin-service": "services/adminService",
         "survey-util-service": "../../common/services/surveyUtilService"
     },

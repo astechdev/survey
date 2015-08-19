@@ -1,33 +1,14 @@
-/**
- *  Define the Model that all models inherit.
- */
-var mysql = require("mysql");
-function Model() {
-    this.opts = {
-        host: process.env.OPENSHIFT_MYSQL_DB_HOST,
-        user: process.env.OPENSHIFT_MYSQL_DB_USERNAME,
-        port: process.env.OPENSHIFT_MYSQL_DB_PORT,
-        password: process.env.OPENSHIFT_MYSQL_DB_PASSWORD,
-        database: process.env.OPENSHIFT_GEAR_NAME
-    };
-//     console.log('Connection opts: ' + JSON.stringify(this.opts));
-    this.connection = mysql.createConnection(this.opts, function(err) {
-        // connected! (unless `err` is set)
-        console.log('Connection Creation Error: ' + err);
-    });
-    this.connection.connect();
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize(process.env.dbName, process.env.username, process.env.password, {
+    port: process.env.port,
+    dialect: "mysql"
+});
+
+function Model(Sequelize, sequelize) {
+    this.Sequelize = Sequelize;
+    this.sequelize = sequelize;
 }
-
 Model.prototype = {
-    constructor: Model,
-    query: function(query, callback) {
-        if(this.connection) {
-            this.connection.query(query, function(err, rows, fields) {
-                if(err) throw err;
-                callback(rows);
-            });
-        }
-    }
+    constructor: Model
 };
-
-module.exports = new Model();
+module.exports = new Model(Sequelize, sequelize);
