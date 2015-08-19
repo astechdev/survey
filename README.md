@@ -29,13 +29,13 @@ git clone https://github.com/astechdev/survey.git
 npm install
 ```
 
-The packahe.json has a postinstall script that should install all client side bower dependencies
+The package.json has a postinstall script that should install all client side dependencies
 
 ```js
 cd ./public && node ../node_modules/bower/bin/bower install
 ```
 
-I have tested this on Windows and it works but I have not been able to test it on any other OS. If you experience console error referencing anything in '/bower_components' it is because the postinstall script failed. Please navigate to './public' and run 'bower install'.
+I have tested this installation on Windows and it works but I have not been able to test it on any other OS. If you experience any console errors referencing anything in '/bower_components' it is because the postinstall script failed. Please navigate to './public' and run 'bower install'.
 
 * Update database configuration variables at the top of server.js file
 
@@ -65,7 +65,7 @@ You can then view survey results at 'http://localhost:3000/admin/results'. The r
 
 ## Take the survey
 
-Once you have questions available for the survey you can navigate to 'http://localhost:3000/survey'. You will be presented with a random, previously unanswered surevy question. Answers are persisted in the database (once submitted) but they do not have a reference to the user who submitted them. The way the app keeps track of previously answered questions is to store them in the browsers local storage.
+Once you have questions available for the survey you can navigate to 'http://localhost:3000/survey'. You will be presented with a random, previously unanswered survey question. Answers are persisted in the database (once submitted) but they do not have a reference to the user who submitted them. The way the app keeps track of previously answered questions is to store them in the browsers local storage.
 
 ## License
 
@@ -79,7 +79,7 @@ This app was produced to demonstrate several JS competencies. However, for the s
 
 * Integration Testing
 
-* Automated Testing (Selenium)
+* Automated Testing
 
 * Documentation
 
