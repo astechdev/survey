@@ -83,6 +83,9 @@ define(['app', '../../../common/services/surveyUtilService'], function(app) {
                         $location.path('/survey/random');
                     } else if(status === 'error') {
                         $location.path('/survey/error');
+                    } else if(status === 'clear') {
+                        localStorageService.set('answeredSurveyModel', {questions: [], answers: {} });
+                        $location.path('/survey/random');
                     }
                 }
             };

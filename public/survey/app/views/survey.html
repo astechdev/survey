@@ -22,10 +22,11 @@
                     </md-content>
                 </md-content>
                 <md-button ng-if="SurveyService.answerId !== undefined" class="md-raised md-primary" ng-click="SurveyUtilService.addAnswerToSurvey(SurveyService.questionId, SurveyService.answerId, SurveyService.localStoreAnswer, SurveyService.localStoreAnswer)">Next</md-button>
-                <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'complete'">
-                    <p>Survey complete...Thank you!</p>
+                <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'complete'" layout="column" layout-padding layout-align="space-around center">
+                    <p>No unaswered questions. Try again later...</p>
+                    <md-button class="md-raised md-primary" ng-click="SurveyService.localStoreAnswer('clear')">Retake Survey</md-button>
                 </md-content>
-                <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'unavailable'">
+                <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'unavailable'" layout="column" layout-padding layout-align="space-around center">
                     <p>This question is not available.</p>
                 </md-content>
                 <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'error'">

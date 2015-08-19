@@ -11,6 +11,8 @@ define(['angularAMD', 'angular-local-storage', 'angular-route', "angular-materia
             templateUrl: 'survey/app/views/survey.html',
             controller: 'surveyController',
             controllerUrl: 'controllers/surveyController'
+        })).when('/survey', angularAMD.route({
+            redirectTo: '/survey/random'
         })).when('/', angularAMD.route({
             templateUrl: 'survey/app/views/welcome.html',
             controller: 'welcomeController',

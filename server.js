@@ -1,8 +1,8 @@
 //Database configuration
-process.env.dbName = 'your_db_name';
-process.env.username = 'your_db_username';
-process.env.password = 'your_db_password';
-process.env.port = your_db_port;
+process.env.dbName = 'pitchpredict';
+process.env.username = 'adminHDr7Y4a';
+process.env.password = '68UYVLhK8Cgt';
+process.env.port = 3306;
 
 var express = require('express');
 var fs = require('fs');
