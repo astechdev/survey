@@ -13,7 +13,7 @@
             <md-content flex=75 layout="column" class="md-whiteframe-z5 md-primary md-hue-1" layout-padding layout-align="space-around center">
                 <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'survey'">
                     <h6 class="md-title">{{(SurveyUtilService.surveyModel.questions | filter:{id:SurveyService.questionId})[0].question}}</h6>
-                    <md-content class="md-primary md-hue-1" flex layout-sm='column' layout-gt-sm='row' layout-align="space-around center">
+                    <md-content class="md-primary md-hue-1" flex layout='column' layout-align="space-around center">
                         <md-radio-group ng-model="SurveyService.answerId" class="md-primary">
                             <md-radio-button ng-repeat="availableAnswer in SurveyUtilService.getAvailableAnswers(SurveyService.questionId)" ng-value="availableAnswer.id">
                                 {{ availableAnswer.available_answer }}
@@ -30,7 +30,7 @@
                     <p>This question is not available.</p>
                 </md-content>
                 <md-content class="md-primary md-hue-1" ng-if="SurveyService.displayContent === 'error'">
-                    <p>There was an error saving your response.</p>
+                    <p>There was an error...</p>
                 </md-content>
             </md-content>
         </md-content>
